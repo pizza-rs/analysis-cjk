@@ -1,0 +1,17 @@
+[package]
+name = "pizza-analysis-cjk"
+version = "0.1.0"
+edition = "2021"
+description = "CJK (Chinese/Japanese/Korean) analysis components for Pizza search engine"
+license = "MIT"
+
+[features]
+default = ["std"]
+std = ["pizza-engine/std"]
+
+[dependencies]
+pizza-engine = { path = "../../lib/engine", default-features = false }
+hashbrown = { version = "0.14", default-features = false }
+once_cell = { version = "1", default-features = false, features = ["alloc"] }
+
+[workspace]
