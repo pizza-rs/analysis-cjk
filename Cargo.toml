@@ -2,7 +2,7 @@
 name = "pizza-analysis-cjk"
 version = "0.1.0"
 edition = "2021"
-description = "CJK (Chinese/Japanese/Korean) analysis components for Pizza search engine"
+description = "CJK (Chinese/Japanese/Korean) text analysis plugin for INFINI Pizza"
 license = "MIT"
 
 [features]
