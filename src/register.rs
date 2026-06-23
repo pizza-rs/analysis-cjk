@@ -18,21 +18,19 @@ use crate::width::CjkWidthFilter;
 /// - `"cjk_stop"` token filter
 pub fn register_all(factory: &mut AnalysisFactory) {
     // Token filters
-    factory.register_token_filter("cjk_bigram", Box::new(CjkBigramFilter::new()));
-    factory.register_token_filter("cjk_width", Box::new(CjkWidthFilter::new()));
-    factory.register_token_filter("cjk_stop", Box::new(CjkStopFilter::new()));
+    factory.register_token_filter_with("cjk_bigram", || Box::new(CjkBigramFilter::new()));
+    factory.register_token_filter_with("cjk_width", || Box::new(CjkWidthFilter::new()));
+    factory.register_token_filter_with("cjk_stop", || Box::new(CjkStopFilter::new()));
 
     // Analyzer: standard CJK pipeline
-    let filters: Vec<Box<dyn TokenFilter>> = vec![
-        Box::new(CjkWidthFilter::new()),
-        Box::new(CjkBigramFilter::new()),
-        Box::new(CjkStopFilter::new()),
-    ];
-
-    factory.register_analyzer(
-        "cjk",
-        Analyzer::new(vec![], Box::new(StandardTokenizer::new()), filters),
-    );
+    factory.register_analyzer_with("cjk", || {
+        let filters: Vec<Box<dyn TokenFilter>> = vec![
+            Box::new(CjkWidthFilter::new()),
+            Box::new(CjkBigramFilter::new()),
+            Box::new(CjkStopFilter::new()),
+        ];
+        Analyzer::new(vec![], Box::new(StandardTokenizer::new()), filters)
+    });
 }
 
 #[cfg(test)]
