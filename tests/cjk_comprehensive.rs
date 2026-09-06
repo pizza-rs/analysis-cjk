@@ -1,7 +1,9 @@
 //! Comprehensive tests for pizza-analysis-cjk.
 
 use pizza_analysis_cjk::*;
-use pizza_engine::analysis::{AnalysisFactory, Token, TokenFilter};
+use pizza_engine::analysis::AnalysisFactory;
+use pizza_engine::analysis::Token;
+use pizza_engine::analysis::TokenFilter;
 
 fn make_token(term: &str) -> Token<'_> {
     Token::new(term, 0, term.len() as u32, 0)

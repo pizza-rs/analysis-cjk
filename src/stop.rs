@@ -4,46 +4,15 @@ use alloc::borrow::Cow;
 use alloc::vec::Vec;
 use hashbrown::HashSet;
 use once_cell::sync::Lazy;
-use pizza_engine::analysis::{Token, TokenFilter};
+use pizza_engine::analysis::Token;
+use pizza_engine::analysis::TokenFilter;
 
 /// Default CJK stop words sourced from Apache Lucene.
 static DEFAULT_STOP_WORDS: Lazy<HashSet<&'static str>> = Lazy::new(|| {
     let words: &[&str] = &[
-    "a",
-    "and",
-    "are",
-    "as",
-    "at",
-    "be",
-    "but",
-    "by",
-    "for",
-    "if",
-    "in",
-    "into",
-    "is",
-    "it",
-    "no",
-    "not",
-    "of",
-    "on",
-    "or",
-    "s",
-    "such",
-    "t",
-    "that",
-    "the",
-    "their",
-    "then",
-    "there",
-    "these",
-    "they",
-    "this",
-    "to",
-    "was",
-    "will",
-    "with",
-    "www",
+        "a", "and", "are", "as", "at", "be", "but", "by", "for", "if", "in", "into", "is", "it",
+        "no", "not", "of", "on", "or", "s", "such", "t", "that", "the", "their", "then", "there",
+        "these", "they", "this", "to", "was", "will", "with", "www",
     ];
     words.iter().copied().collect()
 });
